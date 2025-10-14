@@ -9,13 +9,13 @@ public class CultureTest {
 
     @Test
     public void equals() {
-        Culture culture = new Culture("Hello");
+        Note culture = new Note("Hello");
 
         // same object -> returns true
         assertTrue(culture.equals(culture));
 
         // same values -> returns true
-        Culture cultureCopy = new Culture(culture.value);
+        Note cultureCopy = new Note(culture.value);
         assertTrue(culture.equals(cultureCopy));
 
         // different types -> returns false
@@ -25,7 +25,7 @@ public class CultureTest {
         assertFalse(culture.equals(null));
 
         // different remark -> returns false
-        Culture differentRemark = new Culture("Bye");
+        Note differentRemark = new Note("Bye");
         assertFalse(culture.equals(differentRemark));
     }
 }

@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddNoteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Name;
 
 /**
@@ -42,7 +42,7 @@ public class AddNoteCommandParser implements Parser<AddNoteCommand> {
         String noteStr = matcher.group("note").trim();
 
         Name name = ParserUtil.parseName(nameStr);
-        Culture culture = new Culture(noteStr);
+        Note culture = new Note(noteStr);
 
         return new AddNoteCommand(name, culture);
     }

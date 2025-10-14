@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Country;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -115,7 +115,7 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        final Culture modelCulture = (culture == null) ? new Culture("") : new Culture(culture);
+        final Note modelCulture = (culture == null) ? new Note("") : new Note(culture);
 
         if (!isNull(country) && !Country.isValidCountry(country)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);

@@ -23,7 +23,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -99,7 +99,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_note() throws Exception {
-        final Culture note = new Culture("Some culture notes.");
+        final Note note = new Note("Some culture notes.");
         final String name = "Alice Pauline";
         AddNoteCommand command = (AddNoteCommand) parser.parseCommand(AddNoteCommand.COMMAND_WORD
             + " name: " + name + " note: " + note.value);

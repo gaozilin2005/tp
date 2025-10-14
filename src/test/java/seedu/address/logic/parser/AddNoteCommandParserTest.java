@@ -9,7 +9,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddNoteCommand;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Name;
 
 public class AddNoteCommandParserTest {
@@ -25,7 +25,7 @@ public class AddNoteCommandParserTest {
         String userInput = " " + PREFIX_NAME + VALID_NAME + " " + PREFIX_NOTE + VALID_NOTE;
 
         AddNoteCommand expectedCommand =
-            new AddNoteCommand(new Name(VALID_NAME), new Culture(VALID_NOTE));
+            new AddNoteCommand(new Name(VALID_NAME), new Note(VALID_NOTE));
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -34,7 +34,7 @@ public class AddNoteCommandParserTest {
     public void parse_emptyNote_success() {
         String userInput = "name: Alice Pauline note: ";
         AddNoteCommand expectedCommand =
-            new AddNoteCommand(new Name("Alice Pauline"), new Culture(""));
+            new AddNoteCommand(new Name("Alice Pauline"), new Note(""));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

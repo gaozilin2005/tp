@@ -26,13 +26,13 @@ public class Person {
     // Data fields
     private final Address address;
     private final Country country;
-    private final Culture culture;
+    private final Note culture;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Culture culture, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Note culture, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, culture, tags);
         this.name = name;
         this.phone = phone;
@@ -53,7 +53,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.country = country;
-        this.culture = new Culture("");
+        this.culture = new Note("");
         this.tags.addAll(tags);
 
         removeOldCountryTags();
@@ -69,7 +69,7 @@ public class Person {
      * If both culture notes and country is included in initialisation.
      */
     public Person(Name name, Phone phone, Email email, Address address,
-              Country country, Culture culture, Set<Tag> tags) {
+                  Country country, Note culture, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, culture, tags);
         this.name = name;
         this.phone = phone;
@@ -96,7 +96,7 @@ public class Person {
         return address;
     }
 
-    public Culture getCulture() {
+    public Note getCulture() {
         return culture;
     }
 

@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Worldly is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -147,11 +147,21 @@ Finds persons whose names contain any of the given keywords.
 
 Format: `addnote name:NAME note:NOTE`
 
+Examples:
+* `addnote name:John Doe note:Cannot drink alcohol`
+
+### Searching for contacts by tag: `findtag`
+
+Finds persons who are tagged all of the given keywords.
+
+Format: `findtag TAG`
+
 * The search is case-sensitive. e.g `hans` will match `hans` but not `Hans`
 * Only full words will be matched e.g. `Han` will not match `Hans`
 
 Examples:
-* `addnote name:John Doe note:Cannot drink alcohol`
+* `findtag friends`
+* `findtag friends colleagues`
 
 ### Clearing all entries : `clear`
 

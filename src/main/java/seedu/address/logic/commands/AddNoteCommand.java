@@ -7,7 +7,7 @@ import java.util.List;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
@@ -27,12 +27,12 @@ public class AddNoteCommand extends Command {
     public static final String MESSAGE_PERSON_NOT_FOUND = "No person found with name: %1$s";
 
     private final Name name;
-    private final Culture culture; // “Culture” here represents the note text
+    private final Note culture; // “Culture” here represents the note text
 
     /**
      * Creates an AddNoteCommand to add or update the given person's note.
      */
-    public AddNoteCommand(Name name, Culture culture) {
+    public AddNoteCommand(Name name, Note culture) {
         requireAllNonNull(name, culture);
         this.name = name;
         this.culture = culture;

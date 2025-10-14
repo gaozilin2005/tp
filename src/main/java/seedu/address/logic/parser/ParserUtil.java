@@ -12,7 +12,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Country;
-import seedu.address.model.person.Culture;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -108,13 +108,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code culture} is invalid.
      */
-    public static Culture parseCulture(String culture) throws ParseException {
+    public static Note parseCulture(String culture) throws ParseException {
         if (culture == null) {
             throw new ParseException("Culture cannot be null");
         }
         // Allow empty or whitespace-only input
         String trimmedCulture = culture.trim();
-        return new Culture(trimmedCulture);
+        return new Note(trimmedCulture);
     }
     /**
      * Parses an optional {@code String country} into an {@code Country}.
