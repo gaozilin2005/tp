@@ -17,6 +17,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.Person.CommunicationChannel;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser
@@ -160,5 +161,17 @@ public class ParserUtil {
         return tagSet;
     }
 
+    public static CommunicationChannel parseChannel(String channel) throws ParseException {
+        requireNonNull(channel);
+        String trimmedChannel = channel.trim();
+        if (trimmedChannel.isEmpty()) {
+            return null; // or Optional.empty() if you prefer
+        }
 
+        try {
+            return CommunicationChannel.valueOf(trimmedChannel.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new ParseException("Invalid channel! Valid options: EMAIL, WHATSAPP, TELEGRAM");
+        }
+    }
 }

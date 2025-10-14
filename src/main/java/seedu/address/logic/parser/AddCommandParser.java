@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CHANNEL;
 
 import java.util.Optional;
 import java.util.Set;
@@ -38,7 +39,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                PREFIX_ADDRESS, PREFIX_COUNTRY, PREFIX_NOTE, PREFIX_TAG);
+                PREFIX_ADDRESS, PREFIX_COUNTRY, PREFIX_NOTE, PREFIX_TAG, PREFIX_CHANNEL);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -62,9 +63,11 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
+        Person.CommunicationChannel finalPreferredChannel = preferredChannel;
         Person person = countryOptional
-                .map(country -> new Person(name, phone, email, address, country, culture, tagList))
-                .orElseGet(() -> new Person(name, phone, email, address, culture, tagList));
+                .map(country -> new Person(name, phone, email, address, country, culture,
+                        tagList, finalPreferredChannel))
+                .orElseGet(() -> new Person(name, phone, email, address, culture, tagList, finalPreferredChannel));
 
         return new AddCommand(person);
     }

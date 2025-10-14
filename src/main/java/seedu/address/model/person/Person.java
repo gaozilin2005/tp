@@ -28,6 +28,7 @@ public class Person {
     private final Country country;
     private final Note culture;
     private final Set<Tag> tags = new HashSet<>();
+    private final CommunicationChannel preferredChannel;
 
     /**
      * Every field must be present and not null.
@@ -41,6 +42,7 @@ public class Person {
         this.country = null;
         this.culture = culture;
         this.tags.addAll(tags);
+        this.preferredChannel = CommunicationChannel.EMAIL;
     }
 
     /**
@@ -55,6 +57,7 @@ public class Person {
         this.country = country;
         this.culture = new Note("");
         this.tags.addAll(tags);
+        this.preferredChannel = CommunicationChannel.EMAIL;
 
         removeOldCountryTags();
 
@@ -78,6 +81,55 @@ public class Person {
         this.country = country;
         this.culture = culture;
         this.tags.addAll(tags);
+        this.preferredChannel = CommunicationChannel.EMAIL;
+    }
+
+    /**
+     * If both culture notes, country and channel is included in initialisation.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Country country,
+                  Culture culture, Set<Tag> tags,
+                  CommunicationChannel preferredChannel) {
+        requireAllNonNull(name, phone, email, address, tags, preferredChannel);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.country = country;
+        this.culture = culture;
+        this.tags.addAll(tags);
+        this.preferredChannel = preferredChannel;
+    }
+
+    /**
+     * If only culture and channel is included in initialisation.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Culture culture,
+                  Set<Tag> tags,
+                  CommunicationChannel preferredChannel) {
+        requireAllNonNull(name, phone, email, address, tags, preferredChannel);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.country = null;
+        this.culture = culture;
+        this.tags.addAll(tags);
+        this.preferredChannel = preferredChannel;
+    }
+
+    public enum CommunicationChannel {
+        PHONE,
+        EMAIL,
+        PLATFORM,
+        SMS,
+        WHATSAPP,
+        TELEGRAM
+    }
+
+
+    public CommunicationChannel getPreferredChannel() {
+        return preferredChannel;
     }
 
     public Name getName() {
@@ -169,7 +221,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, country, culture, tags);
+        return Objects.hash(name, phone, email, address, country, culture, tags, preferredChannel);
     }
 
     @Override
@@ -182,6 +234,7 @@ public class Person {
                 .add("country", country)
                 .add("culture", culture)
                 .add("tags", tags)
+                .add("preferredChannel", preferredChannel)
                 .toString();
     }
 

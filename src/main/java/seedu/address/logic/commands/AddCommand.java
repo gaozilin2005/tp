@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CHANNEL;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -28,6 +29,7 @@ public class AddCommand extends Command {
         + PREFIX_PHONE + "PHONE "
         + PREFIX_EMAIL + "EMAIL "
         + PREFIX_ADDRESS + "ADDRESS "
+        + PREFIX_CHANNEL + "CHANNEL "
         + "[" + PREFIX_NOTE + "NOTE] "
         + "[" + PREFIX_TAG + "TAG]...\n"
         + "Example: " + COMMAND_WORD + " "
@@ -35,6 +37,7 @@ public class AddCommand extends Command {
         + PREFIX_PHONE + "98765432 "
         + PREFIX_EMAIL + "johnd@example.com "
         + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
+        + PREFIX_CHANNEL + "PHONE "
         + PREFIX_COUNTRY + "Singapore "
         + PREFIX_NOTE + "Prefers WhatsApp "
         + PREFIX_TAG + "friends "

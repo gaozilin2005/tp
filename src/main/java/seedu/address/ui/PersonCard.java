@@ -48,6 +48,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label culture;
+    @FXML
+    private Label channel;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to
@@ -62,6 +64,13 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         culture.setText(person.getCulture().value);
+        if (person.getPreferredChannel() != null) {
+            channel.setVisible(true);
+            channel.setText(person.getPreferredChannel().name());
+        } else {
+            channel.setVisible(false);
+            channel.setManaged(false);
+        }
 
         if (!isNull(person.getCountry())) {
             country.setVisible(true);
